@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "build": "tsc && cp appsscript.json build/",
+    "push": "npm run build && clasp push",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@types/google-apps-script": "^2.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.2",
+    "typescript": "^5.9.3"
+  }
+}

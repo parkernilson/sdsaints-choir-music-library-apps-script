@@ -1,0 +1,4 @@
+- This is a simple Google Apps Script project that tracks sheet music owned by a choir named the San Diego Saints choir.
+- The goal of this project is to be as simple as possible so that the burden of maintaining it does not become too much for the choir which is a non-profit organization with limited resources. Therefore, code should be kept minimal and as simple as possible.
+- The process of checking out some sheet music includes filling out a google form that is accessible to anyone with the link. The process of checking back in the sheet music involves filling out a different form that is only available to the librarian.
+- If it is not already clear from context, ask clarifying questions so that you know which columns, rows, and questions/answers from forms you should use in any changes / solutions you make.

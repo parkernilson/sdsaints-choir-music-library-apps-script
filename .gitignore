@@ -1,0 +1,11 @@
+# Build output
+build/
+
+# Dependencies
+node_modules/
+
+# CLASP
+.clasp.json
+
+# OS files
+.DS_Store
