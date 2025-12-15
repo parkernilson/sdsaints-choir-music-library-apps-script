@@ -4,6 +4,7 @@
 
 // Items Sheet Column Indices (0-based for array access)
 const ITEMS_SHEET = {
+    NAME_COLUMN: 1, // Column B: Item Name
     ID_COLUMN: 6, // Column G: Item ID
     STATUS_COLUMN: 2, // Column C: Status (Checked In/Out)
     USER_NAME_COLUMN: 3, // Column D: User Name

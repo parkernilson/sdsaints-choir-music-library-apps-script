@@ -8,6 +8,7 @@
  */
 interface CheckedOutItem {
     itemId: string;
+    itemName: string;
     holderName: string;
     holderEmail: string;
     dueDate: Date;
@@ -48,6 +49,17 @@ function isSameDate(date1: Date, date2: Date): boolean {
  */
 function isMonday(date: Date): boolean {
     return date.getDay() === 1; // Sunday = 0, Monday = 1
+}
+
+/**
+ * Format an item for display in email
+ * Shows "Name (ID)" or falls back to "Item #ID" if no name
+ */
+function formatItemForDisplay(item: CheckedOutItem): string {
+    if (item.itemName && item.itemName.trim() !== "") {
+        return `${item.itemName} (${item.itemId})`;
+    }
+    return `Item #${item.itemId}`;
 }
 
 /**
@@ -103,7 +115,7 @@ function buildReminderEmail(group: ReminderGroup, timezone: string): { subject: 
         for (const [dateStr, items] of overdueByDate) {
             body += `  Was due on ${dateStr}:\n`;
             for (const item of items) {
-                body += `  - Item #${item.itemId}\n`;
+                body += `  - ${formatItemForDisplay(item)}\n`;
             }
         }
         body += "\n";
@@ -116,7 +128,7 @@ function buildReminderEmail(group: ReminderGroup, timezone: string): { subject: 
         for (const [dateStr, items] of tomorrowByDate) {
             body += `  Due on ${dateStr}:\n`;
             for (const item of items) {
-                body += `  - Item #${item.itemId}\n`;
+                body += `  - ${formatItemForDisplay(item)}\n`;
             }
         }
         body += "\n";
@@ -129,7 +141,7 @@ function buildReminderEmail(group: ReminderGroup, timezone: string): { subject: 
         for (const [dateStr, items] of weekByDate) {
             body += `  Due on ${dateStr}:\n`;
             for (const item of items) {
-                body += `  - Item #${item.itemId}\n`;
+                body += `  - ${formatItemForDisplay(item)}\n`;
             }
         }
         body += "\n";
@@ -220,6 +232,7 @@ function sendDailyReminders(): void {
         const holderEmail = row[ITEMS_SHEET.USER_EMAIL_COLUMN];
         const dueDateValue = row[ITEMS_SHEET.RETURN_DATE_COLUMN];
         const itemId = row[ITEMS_SHEET.ID_COLUMN];
+        const itemName = row[ITEMS_SHEET.NAME_COLUMN];
 
         // Skip if not checked out
         if (status !== "Checked Out") {
@@ -273,6 +286,7 @@ function sendDailyReminders(): void {
         const group = reminderGroups.get(emailStr)!;
         const item: CheckedOutItem = {
             itemId: String(itemId),
+            itemName: itemName ? String(itemName) : "",
             holderName: String(holderName),
             holderEmail: emailStr,
             dueDate: dueDate,
