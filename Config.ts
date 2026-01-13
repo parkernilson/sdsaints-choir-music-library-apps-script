@@ -4,24 +4,25 @@
 
 const SHEET_NAMES = {
     ITEMS_SHEET: "Items",
+    CHECKOUT_RESPONSES: "Checkout Form Responses",
+    CHECKIN_RESPONSES: "Checkin Form Responses",
 };
 
-// Items Sheet Column Indices (0-based for array access)
 const ITEMS_SHEET = {
     HEADER_ROW: 1,
     UNIQUE_ID_COL: 1,
     STATUS_COL: 3,
+    ITEM_CHECKED_OUT_TEXT: "Checked Out",
+    ITEM_CHECKED_IN_TEXT: "Checked In",
+    ITEM_NEWLY_CREATED_TEXT: "Newly Created",
 };
 
-// Check Out Form Response Indices (0-based for e.values array)
 const CHECKOUT_FORM = {
-    USER_EMAIL: 1,
-    RETURN_DATE: 2,
-    ITEM_IDS: 3,
-    USER_NAME: 4,
+    ITEM_IDS_INDEX: 3,
+    USER_NAME_INDEX: 1,
+    USER_EMAIL_INDEX: 2,
 };
 
-// Check In Form Response Indices (0-based for e.values array)
 const CHECKIN_FORM = {
-    ITEM_IDS: 2,
+    ITEM_IDS_INDEX: 1,
 };
