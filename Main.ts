@@ -29,6 +29,5 @@
 // }
 
 function onChange(e: GoogleAppsScript.Events.SheetsOnChange) {
-    // Trigger when rows are inserted, deleted, or structure changes
     initNewRowsWithDefaultValues(e);
 }
